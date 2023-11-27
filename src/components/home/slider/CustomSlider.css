@@ -7,7 +7,6 @@
   margin: 20px auto;
   border-radius: 5px;
   cursor: pointer;
-  overflow: hidden; /* Ensure the highlight doesn't overflow */
 }
 
 .slider-track {
@@ -15,21 +14,14 @@
   top: 50%;
   height: 4px;
   background-color: #3f0077; /* Highlight color */
+  width: 100%;
   transform: translateY(-50%);
   z-index: 2;
 }
 
-.slider-highlight {
-  position: absolute;
-  top: 50%;
-  height: 100%;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
 .slider-background {
   position: absolute;
-  width: calc(100% - 50px); /* Width after the thumb */
+  width: 100%; /* Width after the thumb */
   height: 4px;
   top: 50%;
   transform: translateY(-50%);
@@ -51,5 +43,47 @@
   align-items: center;
   font-size: 12px;
   user-select: none;
-  z-index: 3;
+  z-index: 100;
+}
+
+.slider-circle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #3f0077;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.slider-circle.start {
+  left: 0;
+}
+
+.slider-circle.end {
+  right: 0;
+  background-color: white;
+}
+
+
+.scale {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  padding: 3px ;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scale-line {
+  width: 2px;
+  height: 16px; /* Adjusted height of scale lines */
+  background-color: #ccc;
+}
+
+.scale-line.highlighted {
+  background-color: #3f0077; /* Highlighted color */
 }
