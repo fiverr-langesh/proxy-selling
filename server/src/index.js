@@ -1,6 +1,8 @@
 const express = require("express");
 const { connectDb } = require("./utils/db/connectDb");
 const { AuthRouter } = require("./router/auth/user.router");
+const cors = require('cors')
+
 const app = express();
 
 // Load env vars
@@ -13,6 +15,7 @@ connectDb();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 // Routes
 app.use("/api/auth", AuthRouter);

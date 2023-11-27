@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import NavigateButton from "../common/buttons/NavigateButton";
+import Button from "../common/buttons/Button";
+import api from "../../utils/api";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function RegisterComponent() {
   const [registerData, setRegisterData] = useState({
@@ -8,6 +15,57 @@ function RegisterComponent() {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [reqState, setReqState] = useState({
+    loading: false,
+    error: {
+      status: false,
+      message: "",
+    },
+    success: {
+      status: false,
+      message: "",
+    },
+  });
+
+  const handleSuccessClose = (event) => {
+    setTimeout(() => {
+      setReqState({
+        ...reqState,
+        success: {
+          status: false,
+          message: "",
+        },
+      });
+    }, 200);
+
+    setReqState({
+      ...reqState,
+      success: {
+        status: false,
+        message: reqState.success.message,
+      },
+    });
+  };
+
+  const handleErrorClose = (event) => {
+    setTimeout(() => {
+      setReqState({
+        ...reqState,
+        error: {
+          status: false,
+          message: "",
+        },
+      });
+    }, 200);
+
+    setReqState({
+      ...reqState,
+      error: {
+        status: false,
+        message: reqState.error.message,
+      },
+    });
+  };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -20,8 +78,81 @@ function RegisterComponent() {
     });
   };
 
-  const onsubmit = () => {
+  const handleSubmit = async (e) => {
     console.log(registerData);
+    e.preventDefault();
+
+    try {
+      const payload = {
+        ...registerData
+      };
+
+      if (payload.username === "" || payload.email === "" || payload.password === "") {
+        setReqState({
+          ...reqState,
+          error: {
+            status: true,
+            message: "Please fill all fields",
+          },
+        });
+        return;
+      }
+
+      setReqState({
+        ...reqState,
+        loading: true,
+      });
+
+      // send payload to backend
+      const res = await api.post("/auth/register", payload);
+
+      console.log(res.status, res.data);
+
+      if (res.status === 200 || res.status === 201) {
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+
+        setReqState({
+          ...reqState,
+          loading: false,
+          success: {
+            status: true,
+            message: "Registration successful",
+          },
+        });
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+      }
+    } catch (err) {
+      console.log(err.response?.data.error);
+
+      if (!err.response) {
+        setReqState({
+          ...reqState,
+          loading: false,
+          error: {
+            status: true,
+            message: "Network error",
+          },
+        });
+        return;
+      }
+      setReqState({
+        ...reqState,
+        loading: false,
+        error: {
+          status: true,
+          message: err.response?.data.error,
+        },
+      });
+    }
+
+    // setReqState({
+    //   ...reqState,
+    //   loading: false,
+    // });
   };
 
   return (
@@ -29,7 +160,10 @@ function RegisterComponent() {
       <div>
         <img src="/images/logo.png" alt="" />
       </div>
-      <div className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[650px]">
+      <form
+        onSubmit={handleSubmit}
+        className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[650px]"
+      >
         <div className=" md:col-span-2 ml-10 hidden md:flex flex-col justify-center items-start text-darkSecondary">
           <h1 className=" font-semibold text-4xl my-4">Access Dashboard</h1>
           <span className=" flex gap-1 items-center text-2xl">
@@ -95,11 +229,33 @@ function RegisterComponent() {
               </div>
             </div>
             <div className=" mt-7 w-fit h-fit" onClick={onsubmit}>
-              <NavigateButton text={"Register"} href={"#"} />
+              <Button
+                text={reqState.loading ? "Loading..." : "Register"}
+                type="submit"
+              />{" "}
             </div>
           </div>
         </div>
-      </div>
+      </form>
+      <Snackbar
+        open={reqState.success.status}
+        autoHideDuration={6000}
+        onClose={handleSuccessClose}
+      >
+        <Alert onClose={handleSuccessClose} severity="success">
+          {reqState.success.message}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={reqState.error.status}
+        autoHideDuration={6000}
+        onClose={handleErrorClose}
+      >
+        <Alert onClose={handleErrorClose} severity="error">
+          {reqState.error.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
