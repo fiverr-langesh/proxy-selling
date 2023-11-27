@@ -1,6 +1,6 @@
 import React from "react";
 import NavigateButton from "../common/buttons/NavigateButton";
-import Slider from "./Slider";
+import Slider from "./slider/Slider";
 
 export default function Banner() {
   return (
