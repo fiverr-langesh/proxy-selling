@@ -8,8 +8,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 function App() {
   return (
       <Routes>
-        <Route path="/auth/register" element={<Register/>}/>
-        <Route path="/auth/login" element={<Login/>}/>
+        <Route path="/signup" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/" element={<Banner/>}/>
         <Route path="/proxy" element={<Proxy />} />
         <Route path="proxy-location" element={<ProxyLocation/>} />
