@@ -1,12 +1,70 @@
-import React, { useState } from "react";
-import NavigateButton from "../common/buttons/NavigateButton";
+import React, { useEffect, useState } from "react";
+import Button from "../common/buttons/Button";
+import api from "../../utils/api";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function LoginComponent() {
   const [loginData, setLoginData] = useState({
-    username: "",
+    userName: "",
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [reqState, setReqState] = useState({
+    loading: false,
+    error: {
+      status: false,
+      message: "",
+    },
+    success: {
+      status: false,
+      message: "",
+    },
+  });
+
+  const handleSuccessClose = (event) => {
+    setTimeout(() => {
+      setReqState({
+        ...reqState,
+        success: {
+          status: false,
+          message: "",
+        },
+      });
+    }, 200);
+
+    setReqState({
+      ...reqState,
+      success: {
+        status: false,
+        message: reqState.success.message,
+      },
+    });
+  };
+
+  const handleErrorClose = (event) => {
+    setTimeout(() => {
+      setReqState({
+        ...reqState,
+        error: {
+          status: false,
+          message: "",
+        },
+      });
+    }, 200);
+
+    setReqState({
+      ...reqState,
+      error: {
+        status: false,
+        message: reqState.error.message,
+      },
+    });
+  };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -19,8 +77,93 @@ function LoginComponent() {
     });
   };
 
-  const onsubmit = () => {
+  // useEffect(() => {
+  //   console.log(reqState)
+  // },[reqState])
+
+  const handleSubmit = async (e) => {
     console.log(loginData);
+    e.preventDefault();
+
+    try {
+      const payload = {
+        password: loginData.password,
+      };
+
+      // check for empty fields
+      if (loginData.userName === "" || loginData.password === "") {
+        setReqState({
+          ...reqState,
+          error: {
+            status: true,
+            message: "Please fill all fields",
+          },
+        });
+        return;
+      }
+
+      // check type of user input ( username or email )
+      const isEmail = loginData.userName.includes("@");
+
+      if (isEmail) {
+        payload.email = loginData.userName;
+      } else {
+        payload.userName = loginData.userName;
+      }
+
+      setReqState({
+        ...reqState,
+        loading: true,
+      });
+
+      // send payload to backend
+      const res = await api.post("/auth/login", payload);
+
+      if (res.status === 200) {
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+
+        setReqState({
+          ...reqState,
+          loading: false,
+          success: {
+            status: true,
+            message: "Login successful",
+          },
+        });
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+      }
+    } catch (err) {
+      console.log(err.response?.data.error);
+
+      if (!err.response) {
+        setReqState({
+          ...reqState,
+          loading: false,
+          error: {
+            status: true,
+            message: "Network error",
+          },
+        });
+        return;
+      }
+      setReqState({
+        ...reqState,
+        loading: false,
+        error: {
+          status: true,
+          message: err.response?.data.error,
+        },
+      });
+    }
+
+    // setReqState({
+    //   ...reqState,
+    //   loading: false,
+    // });
   };
 
   return (
@@ -28,7 +171,10 @@ function LoginComponent() {
       <div className=" mb-3">
         <img src="/images/logo.png" alt="" />
       </div>
-      <div className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[650px]">
+      <form
+        onSubmit={handleSubmit}
+        className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[650px]"
+      >
         <div className=" md:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary">
           <h1 className=" font-semibold text-4xl my-4">Access Dashboard</h1>
           <span className=" flex gap-1 items-center text-2xl">
@@ -54,7 +200,7 @@ function LoginComponent() {
                   className=" w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4"
                   type="text"
                   placeholder="Enter username"
-                  name="username"
+                  name="userName"
                   onChange={onchange}
                 />
               </div>
@@ -71,7 +217,7 @@ function LoginComponent() {
                 />
                 <div
                   onClick={toggleShowPassword}
-                  className=" cursor-pointer absolute right-3 top-2"
+                  className=" cursor-pointer absolute right-3 top-3"
                 >
                   {showPassword ? (
                     <ion-icon name="eye-outline"></ion-icon>
@@ -82,11 +228,34 @@ function LoginComponent() {
               </div>
             </div>
             <div className=" mt-7 w-fit h-fit" onClick={onsubmit}>
-              <NavigateButton text={"Log in"} href={"#"} customStyle={" w-[190px] h-[45px] text-lg "}/>
+              <Button
+                text={reqState.loading ? "Loading..." : "Login"}
+                type="submit"
+              />
             </div>
           </div>
         </div>
-      </div>
+      </form>
+
+      <Snackbar
+        open={reqState.success.status}
+        autoHideDuration={6000}
+        onClose={handleSuccessClose}
+      >
+        <Alert onClose={handleSuccessClose} severity="success">
+          {reqState.success.message}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={reqState.error.status}
+        autoHideDuration={6000}
+        onClose={handleErrorClose}
+      >
+        <Alert onClose={handleErrorClose} severity="error">
+          {reqState.error.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
