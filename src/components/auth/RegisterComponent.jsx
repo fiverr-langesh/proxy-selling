@@ -28,7 +28,7 @@ function RegisterComponent() {
       <div>
         <img src="/images/logo.png" alt="" />
       </div>
-      <div className=" grid grid-cols-5 gap-3 items-center justify-center mt-32">
+      <div className=" grid grid-cols-5 gap-3 items-center justify-center mt-24">
         <div className=" col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary">
           <h1 className=" font-semibold text-2xl">Access Dashboard</h1>
           <span className=" flex gap-1 items-center text-xl">
