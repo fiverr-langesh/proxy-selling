@@ -168,7 +168,7 @@ function LoginComponent() {
 
   return (
     <div className="w-screen h-screen overflow-x-hidden overflow-y-auto bg-primary px-[30px] sm:px-[50px] md:px-[20px] lg:px-[100px] xl:px-[130px] pt-10 font-urbanist">
-      <div className=" mb-3">
+      <div className="">
         <img src="/images/logo.png" alt="" />
       </div>
       <form
