@@ -60,10 +60,10 @@ const CustomSlider = () => {
         ></div>
         <div
           onmousedown={() => false}
-          className="slider-thumb"
+          className="slider-thumb font-[600]"
           style={{ left: `calc(${sliderValue}%)` }}
         >
-          {Math.round(sliderValue)}
+          {Math.round(sliderValue)} GB
         </div>
         <div className="slider-background"></div>
         <div className="slider-circle end"></div>
