@@ -48,10 +48,10 @@ function LoginComponent() {
           <div className=" bg-secondaryLogin text-darkSecondary border-none rounded-md drop-shadow-[0_0px_70px_rgba(255,255,255,0.75)] py-14 px-10 sm:px-12 w-[350px] min-[400px]:w-[350px] sm:w-[500px] md:mr-10">
             <h1 className=" font-semibold text-2xl">Sign In To Buy Proxies</h1>
             <div className=" flex flex-col gap-1 my-4">
-              <label htmlFor="username">Username or email</label>
+              <label className=" text-lg" htmlFor="username">Username or email</label>
               <div className="relative p-[2px] rounded-md max-w-sm bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
-                  className=" w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-1.5 px-4"
+                  className=" w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4"
                   type="text"
                   placeholder="Enter username"
                   name="username"
@@ -60,10 +60,10 @@ function LoginComponent() {
               </div>
             </div>
             <div className=" flex flex-col gap-1 my-4">
-              <label htmlFor="password">Password</label>
+              <label className=" text-lg" htmlFor="password">Password</label>
               <div className="relative p-[2px] rounded-md max-w-sm bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
-                  className=" w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-1.5 px-4"
+                  className={` ${showPassword ?" font-urbanist" : "font-sans " } w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4`}
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Enter password"
                   name="password"
@@ -82,7 +82,7 @@ function LoginComponent() {
               </div>
             </div>
             <div className=" mt-7 w-fit h-fit" onClick={onsubmit}>
-              <NavigateButton text={"Log in"} href={"#"} />
+              <NavigateButton text={"Log in"} href={"#"} customStyle={" w-[190px] h-[45px] text-lg "}/>
             </div>
           </div>
         </div>

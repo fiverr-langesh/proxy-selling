@@ -1,8 +1,6 @@
-import Banner from "./components/home/Banner";
-import Proxy from "./components/proxy/Proxy";
-import ProxyLocation from "./pages/proxy-location/proxyLocation";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import LandingPage from "./pages/landing-page/LandingPage";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
@@ -10,9 +8,7 @@ function App() {
       <Routes>
         <Route path="/auth/register" element={<Register/>}/>
         <Route path="/auth/login" element={<Login/>}/>
-        <Route path="/" element={<Banner/>}/>
-        <Route path="/proxy" element={<Proxy />} />
-        <Route path="proxy-location" element={<ProxyLocation/>} />
+        <Route path="/" element={<LandingPage/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
   );
