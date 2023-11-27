@@ -8,6 +8,7 @@ module.exports = {
         primary: "#C56EFA",
         secondary: "#FFC700",
         darkSecondary: "#3F0077",
+        secondaryLogin: "#C363FD",
         gl: "#D97EFC",
         gr: "#7200FF",
       },
