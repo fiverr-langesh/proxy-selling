@@ -39,40 +39,50 @@ const CustomSlider = () => {
   };
 
   return (
-    <div
-      className="custom-slider"
-      ref={sliderRef}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onClick={handleClick}
-    >
-      <div className="slider-circle start"></div>
-      <div className="slider-track" style={{ width: `${sliderValue}%` }}></div>
+    <section className="py-5">
+      <h2 className="text-darkSecondary font-[500]">$1/GB</h2>
       <div
-        className="slider-highlight"
-        style={{ width: `${sliderValue}%` }}
-      ></div>
-      <div
-        onmousedown={() => false}
-        className="slider-thumb"
-        style={{ left: `calc(${sliderValue}%)` }}
+        className="custom-slider"
+        ref={sliderRef}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onClick={handleClick}
       >
-        {Math.round(sliderValue)}
+        <div className="slider-circle start"></div>
+        <div
+          className="slider-track"
+          style={{ width: `${sliderValue}%` }}
+        ></div>
+        <div
+          className="slider-highlight"
+          style={{ width: `${sliderValue}%` }}
+        ></div>
+        <div
+          onmousedown={() => false}
+          className="slider-thumb"
+          style={{ left: `calc(${sliderValue}%)` }}
+        >
+          {Math.round(sliderValue)}
+        </div>
+        <div className="slider-background"></div>
+        <div className="slider-circle end"></div>
+        <div className="scale">
+          {[...Array(20).keys()].map((index) => (
+            <div
+              key={index}
+              className={`scale-line ${
+                index / 20 <= sliderValue / 100 ? "highlighted" : ""
+              }`}
+            ></div>
+          ))}
+        </div>
       </div>
-      <div className="slider-background"></div>
-      <div className="slider-circle end"></div>
-      <div className="scale">
-        {[...Array(20).keys()].map((index) => (
-          <div
-            key={index}
-            className={`scale-line ${
-              index / 20 <= sliderValue / 100 ? "highlighted" : ""
-            }`}
-          ></div>
-        ))}
-      </div>
-    </div>
+
+      <h2 className="text-darkSecondary font-[600] pt-3">
+        Get {Math.round(sliderValue)} GB for {Math.round(sliderValue)}$
+      </h2>
+    </section>
   );
 };
 
