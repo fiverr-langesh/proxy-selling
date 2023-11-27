@@ -22,8 +22,8 @@ export default function Banner() {
           />
         </div>
 
-        <div>
-          <img src="images/home.png" className="w-[494px] h-[564px]" alt="" />
+        <div className="flex items-center justify-center mr-14">
+          <img src="images/home.png" className="  h-[300px] w-[400px] sm:w-[494px] sm:h-[564px]" alt="" />
         </div>
       </section>
     </main>

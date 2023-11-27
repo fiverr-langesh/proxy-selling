@@ -105,6 +105,8 @@ function LoginComponent() {
       // check type of user input ( username or email )
       const isEmail = loginData.userName.includes("@");
 
+      console.log(isEmail)
+
       if (isEmail) {
         payload.email = loginData.userName;
       } else {
@@ -173,7 +175,7 @@ function LoginComponent() {
       </div>
       <form
         onSubmit={handleSubmit}
-        className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[650px]"
+        className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[600px]"
       >
         <div className=" md:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary">
           <h1 className=" font-semibold text-4xl my-4">Access Dashboard</h1>
@@ -233,6 +235,7 @@ function LoginComponent() {
             </div>
             <div className=" mt-7 w-fit h-fit" onClick={onsubmit}>
               <Button
+                customStyle="w-[225px] h-[44px] tracking-widest"
                 text={reqState.loading ? "Loading..." : "Login"}
                 type="submit"
               />
