@@ -7,9 +7,9 @@ module.exports = {
       colors: {
         primary: "#C56EFA",
         secondary: "#FFC700",
+        darkSecondary: "#3F0077",
         gl: "#D97EFC",
         gr: "#7200FF",
-        text: "#3F0077",
       },
 
       // custom font
