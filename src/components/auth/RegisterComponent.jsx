@@ -167,9 +167,9 @@ function RegisterComponent() {
 
   return (
     <div className="w-screen h-screen overflow-x-hidden overflow-y-auto bg-primary px-[30px] sm:px-[50px] md:px-[20px] lg:px-[100px] xl:px-[130px] pt-10 font-urbanist">
-      <div className=" mb-3">
+      <a href="/" className="block mb-3">
         <img src="/images/logo.png" className=" w-[110px] h-[42px]" alt="" />
-      </div>
+      </a>
       <form
         onSubmit={handleSubmit}
         className=" grid lg:grid-cols-5 gap-3 items-center justify-center h-[560px]"
