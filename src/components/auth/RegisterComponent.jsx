@@ -208,8 +208,8 @@ function RegisterComponent() {
               <label className=" text-[26px] font-medium" htmlFor="username">
                 Username
               </label>
-              <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
+                  id="input-gradient"
                   className="font-sans w-full sm:w-[400px] sm:h-[50px] bg-[#CC77FF] placeholder:text-[#dddddd] placeholder:text-[22px] placeholder:font-medium font-medium text-[22px] focus:outline-none border-none rounded-md py-2 px-4"
                   type="text"
                   placeholder="Enter username"
@@ -217,13 +217,12 @@ function RegisterComponent() {
                   onChange={onchange}
                 />
               </div>
-            </div>
             <div className=" flex flex-col gap-1 my-4">
               <label className=" text-[26px] font-medium" htmlFor="email">
                Email
               </label>
-              <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
+                  id="input-gradient"
                   className="font-sans w-full sm:w-[400px] sm:h-[50px] bg-[#CC77FF] placeholder:text-[#dddddd] placeholder:text-[22px] placeholder:font-medium font-medium text-[22px] focus:outline-none border-none rounded-md py-2 px-4"
                   type="text"
                   placeholder="Enter email"
@@ -231,13 +230,13 @@ function RegisterComponent() {
                   onChange={onchange}
                 />
               </div>
-            </div>
             <div className=" flex flex-col gap-1 my-4">
               <label className=" text-[26px] font-medium" htmlFor="password">
                 Password
               </label>
-              <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
+              <div className="relative">
                 <input
+                  id="input-gradient"
                   className={` font-sans w-full sm:w-[400px] sm:h-[51px] bg-[#CC77FF] placeholder:text-[#dddddd] placeholder:text-[22px] placeholder:font-medium font-medium text-[22px] focus:outline-none border-none rounded-md py-2 px-4`}
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Enter password"
@@ -246,7 +245,7 @@ function RegisterComponent() {
                 />
                 <div
                   onClick={toggleShowPassword}
-                  className=" cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[18px]"
+                  className=" cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[16px]"
                 >
                   {showPassword ? (
                     <ion-icon name="eye-outline"></ion-icon>
