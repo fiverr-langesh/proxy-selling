@@ -223,12 +223,15 @@ function LoginComponent() {
                 />
                 <div
                   onClick={toggleShowPassword}
-                  className=" cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[16px]"
+                  className=" cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[13px]"
                 >
                   {showPassword ? (
-                    <ion-icon name="eye-outline"></ion-icon>
+                    <span className=" w-fit h-fit relative">
+                      <img src="/images/eye.png" className=" w-[27px] h-[27px]" alt="" />
+                      <div className=" ml-0.5 h-1 bg-[#3F0077] w-6 absolute top-3 border border-[#3F0077] rounded-full rotate-45"></div>
+                    </span>
                   ) : (
-                    <ion-icon name="eye-off-outline"></ion-icon>
+                    <img src="/images/eye.png" className=" w-[27px] h-[27px]" alt="" />
                   )}
                 </div>
               </div>
