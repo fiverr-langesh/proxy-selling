@@ -177,31 +177,31 @@ function LoginComponent() {
         onSubmit={handleSubmit}
         className=" grid lg:grid-cols-5 gap-3 items-center justify-center h-[560px]"
       >
-        <div className=" lg:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary">
-          <h1 className=" font-semibold text-4xl my-4">Access Dashboard</h1>
-          <span className=" flex gap-1 items-center text-2xl">
+        <div className=" lg:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary font-urbanist">
+          <h1 className=" font-bold text-[35px] my-4">Access Dashboard</h1>
+          <span className=" flex gap-1 items-center text-2xl sm:text-3xl font-medium">
             <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
             <p>Manage your proxy products</p>
           </span>
-          <span className=" flex gap-1 items-center text-2xl">
+          <span className=" flex gap-1 items-center text-2xl sm:text-3xl font-medium">
             <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
             <p>Access documentation</p>
           </span>
-          <span className=" flex gap-1 items-center text-2xl">
+          <span className=" flex gap-1 items-center text-2xl sm:text-3xl font-medium">
             <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
             <p>See usage statistics</p>
           </span>
         </div>
         <div className=" lg:col-span-3 flex items-center justify-center">
           <div className="  bg-secondaryLogin text-darkSecondary border-none rounded-md drop-shadow-[0_0px_70px_rgba(255,255,255,0.75)] py-14 px-10 sm:px-12 w-[350px] min-[400px]:w-[350px] sm:w-[500px] md:mr-10">
-            <h1 className=" font-semibold text-2xl">Sign In To Buy Proxies</h1>
+            <h1 className=" font-bold text-[35px]">Sign In To Buy Proxies</h1>
             <div className=" flex flex-col gap-1 my-4">
-              <label className=" text-lg" htmlFor="username">
+              <label className=" text-[26px] font-medium" htmlFor="username">
                 Username or email
               </label>
               <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
-                  className="font-sans w-full sm:w-[400px] sm:h-[50px] bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4"
+                  className="font-sans w-full sm:w-[400px] sm:h-[50px] bg-[#CC77FF] placeholder:text-[#dddddd] placeholder:text-[22px] placeholder:font-medium font-medium text-[22px] focus:outline-none border-none rounded-md py-2 px-4"
                   type="text"
                   placeholder="Enter username"
                   name="userName"
@@ -210,12 +210,12 @@ function LoginComponent() {
               </div>
             </div>
             <div className=" flex flex-col gap-1 my-4">
-              <label className=" text-lg" htmlFor="password">
+              <label className=" text-[26px] font-medium" htmlFor="password">
                 Password
               </label>
               <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
-                  className={` font-sans w-full sm:w-[400px] sm:h-[51px] bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4`}
+                  className={` font-sans w-full sm:w-[400px] sm:h-[51px] bg-[#CC77FF] placeholder:text-[#dddddd] placeholder:text-[22px] placeholder:font-medium font-medium text-[22px] focus:outline-none border-none rounded-md py-2 px-4`}
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Enter password"
                   name="password"
@@ -235,7 +235,7 @@ function LoginComponent() {
             </div>
             <div className=" mt-7 w-fit h-fit" onClick={onsubmit}>
               <Button
-                customStyle="sm:w-[255px] sm:h-[64px] sm:rounded-[100px] sm:text-xl tracking-widest"
+                customStyle="sm:w-[255px] sm:h-[64px] sm:rounded-[100px] sm:text-[18px] font-medium tracking-widest"
                 text={reqState.loading ? "Loading..." : "Log In"}
                 type="submit"
               />
