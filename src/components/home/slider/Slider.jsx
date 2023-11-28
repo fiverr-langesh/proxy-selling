@@ -39,8 +39,8 @@ const CustomSlider = () => {
   };
 
   return (
-    <section className="py-5">
-      <h2 className="text-darkSecondary font-[500]">$1/GB</h2>
+    <section className="py-5 flex flex-col items-start">
+      <h2 className="text-darkSecondary font-[500] text-[20px] pb-1">$1/GB</h2>
       <div
         className="custom-slider"
         ref={sliderRef}
@@ -79,7 +79,7 @@ const CustomSlider = () => {
         </div>
       </div>
 
-      <h2 className="text-darkSecondary font-[600] pt-3">
+      <h2 className="text-darkSecondary text-[28px] font-[400] pt-10">
         Get {Math.round(sliderValue)} GB for {Math.round(sliderValue)}$
       </h2>
     </section>

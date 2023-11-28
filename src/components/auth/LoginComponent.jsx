@@ -177,7 +177,7 @@ function LoginComponent() {
         onSubmit={handleSubmit}
         className=" grid lg:grid-cols-5 gap-3 items-center justify-center h-[560px]"
       >
-        <div className=" lg:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary font-urbanist">
+        <div className=" lg:col-span-2 mb-16 xl:mb-28 ml-10 flex flex-col justify-center items-start text-darkSecondary font-urbanist">
           <h1 className=" font-bold text-[35px] my-4">Access Dashboard</h1>
           <span className=" flex gap-1 items-center text-2xl sm:text-3xl font-medium">
             <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
@@ -192,7 +192,7 @@ function LoginComponent() {
             <p>See usage statistics</p>
           </span>
         </div>
-        <div className=" lg:col-span-3 flex items-center justify-center">
+        <div className="pb-10 lg:pb-0 lg:col-span-3 flex items-center justify-center">
           <div className="  bg-secondaryLogin text-darkSecondary border-none rounded-md drop-shadow-[0_0px_70px_rgba(255,255,255,0.75)] py-14 px-10 sm:px-12 w-[350px] min-[400px]:w-[350px] sm:w-[500px] md:mr-10">
             <h1 className=" font-bold text-[35px]">Sign In To Buy Proxies</h1>
             <div className=" flex flex-col gap-1 my-4">
@@ -223,7 +223,7 @@ function LoginComponent() {
                 />
                 <div
                   onClick={toggleShowPassword}
-                  className=" cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[13px]"
+                  className="select-none cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[13px]"
                 >
                   {showPassword ? (
                     <span className=" w-fit h-fit relative">

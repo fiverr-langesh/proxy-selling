@@ -6,24 +6,24 @@ function Footer() {
       <div>
         <img className="w-[110px] h-[42px]" src="/images/logo.png" alt="" />
       </div>
-      <div className=" text-xs md:text-sm col-span-2 lg:col-span-3 my-4 sm:my-0">
+      <div className=" text-[17px] font-[300] col-span-2 lg:col-span-3 my-4 sm:my-0">
         <p>www.reallygreatsite.com</p>
         <p>www.facebook.com</p>
         <p>www.instagram.com</p>
       </div>
       <div className=" col-span-2 lg:col-span-1 flex flex-col sm:items-end justify-center">
-        <h1 className=" text-sm md:text-base font-bold">CONTACT US:</h1>
-        <span className=" flex items-center gap-1 text-xs">
+        <h1 className=" text-[18px] font-[700] md:text-base">CONTACT US:</h1>
+        <span className="text-[16px] flex items-center gap-1 text-xs">
           <span className=" mt-1">
             <ion-icon name="call"></ion-icon>
           </span>
-          <p>+93 794 728976</p>
+          <p className='text-[16px] font-[300]'>+93 794 728976</p>
         </span>
         <span className=" flex items-center gap-1 text-xs">
-          <span className=" mt-1">
+          <span className="text-[16px] mt-1">
             <ion-icon name="mail"></ion-icon>
           </span>
-          <p>proxysite@gmail.com</p>
+          <p className='text-[16px] font-[300]'>proxysite@gmail.com</p>
         </span>
       </div>
     </div>
