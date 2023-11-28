@@ -171,37 +171,37 @@ function LoginComponent() {
   return (
     <div className="w-screen h-screen overflow-x-hidden overflow-y-auto bg-primary px-[30px] sm:px-[50px] md:px-[20px] lg:px-[100px] xl:px-[130px] pt-10 font-urbanist">
       <div className=" mb-3">
-        <img src="/images/logo.png" alt="" />
+        <img src="/images/logo.png" className=" w-[110px] h-[42px]" alt="" />
       </div>
       <form
         onSubmit={handleSubmit}
-        className=" grid md:grid-cols-5 gap-3 items-center justify-center h-[600px]"
+        className=" grid lg:grid-cols-5 gap-3 items-center justify-center h-[560px]"
       >
-        <div className=" md:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary">
+        <div className=" lg:col-span-2 ml-10 flex flex-col justify-center items-start text-darkSecondary">
           <h1 className=" font-semibold text-4xl my-4">Access Dashboard</h1>
           <span className=" flex gap-1 items-center text-2xl">
-            <img src="/images/check.png" alt="" />
+            <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
             <p>Manage your proxy products</p>
           </span>
           <span className=" flex gap-1 items-center text-2xl">
-            <img src="/images/check.png" alt="" />
+            <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
             <p>Access documentation</p>
           </span>
           <span className=" flex gap-1 items-center text-2xl">
-            <img src="/images/check.png" alt="" />
+            <img src="/images/check.png" className=" w-[30px] h-[30px]" alt="" />
             <p>See usage statistics</p>
           </span>
         </div>
-        <div className=" md:col-span-3 flex items-center justify-center">
+        <div className=" lg:col-span-3 flex items-center justify-center">
           <div className="  bg-secondaryLogin text-darkSecondary border-none rounded-md drop-shadow-[0_0px_70px_rgba(255,255,255,0.75)] py-14 px-10 sm:px-12 w-[350px] min-[400px]:w-[350px] sm:w-[500px] md:mr-10">
             <h1 className=" font-semibold text-2xl">Sign In To Buy Proxies</h1>
             <div className=" flex flex-col gap-1 my-4">
               <label className=" text-lg" htmlFor="username">
                 Username or email
               </label>
-              <div className="relative p-[2px] rounded-md max-w-sm bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
+              <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
-                  className="font-sans w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4"
+                  className="font-sans w-full sm:w-[400px] sm:h-[50px] bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4"
                   type="text"
                   placeholder="Enter username"
                   name="userName"
@@ -213,9 +213,9 @@ function LoginComponent() {
               <label className=" text-lg" htmlFor="password">
                 Password
               </label>
-              <div className="relative p-[2px] rounded-md max-w-sm bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
+              <div className="relative w-full sm:w-[403px] sm:h-[54px] p-[2px] rounded-md bg-gradient-to-r from-[#D97EFC] to-[#7200FF]">
                 <input
-                  className={` font-sans w-full bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4`}
+                  className={` font-sans w-full sm:w-[400px] sm:h-[51px] bg-[#CC77FF] placeholder:text-[#dddddd] focus:outline-none placeholder:font-medium border-none rounded-md py-2 px-4`}
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Enter password"
                   name="password"
@@ -223,7 +223,7 @@ function LoginComponent() {
                 />
                 <div
                   onClick={toggleShowPassword}
-                  className=" cursor-pointer absolute right-3 top-3"
+                  className=" cursor-pointer absolute right-4 top-3 sm:right-4 sm:top-[18px]"
                 >
                   {showPassword ? (
                     <ion-icon name="eye-outline"></ion-icon>
@@ -235,8 +235,8 @@ function LoginComponent() {
             </div>
             <div className=" mt-7 w-fit h-fit" onClick={onsubmit}>
               <Button
-                customStyle="w-[225px] h-[44px] tracking-widest"
-                text={reqState.loading ? "Loading..." : "Login"}
+                customStyle="sm:w-[255px] sm:h-[64px] sm:rounded-[100px] sm:text-xl tracking-widest"
+                text={reqState.loading ? "Loading..." : "Log In"}
                 type="submit"
               />
             </div>
