@@ -9,6 +9,12 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 768px) {
+  .custom-slider {
+    width: 100%;
+  }
+}
+
 .slider-track {
   position: absolute;
   top: 50%;
