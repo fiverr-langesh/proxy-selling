@@ -47,7 +47,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 18px;
   user-select: none;
   z-index: 100;
 }
@@ -72,7 +72,6 @@
   background-color: white;
 }
 
-
 .scale {
   position: absolute;
   bottom: 0;
@@ -81,7 +80,7 @@
   height: 27px;
   width: 612px;
   padding: 2px;
-  padding-top: 22px ;
+  padding-top: 22px;
   display: flex;
   justify-content: space-between;
 }
