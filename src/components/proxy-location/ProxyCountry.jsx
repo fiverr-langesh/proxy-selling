@@ -13,7 +13,7 @@ function ProxyCountry({ image, country, number }) {
       <Button
         text={country}
         customStyle={
-          " w-[220px] h-[50px] text-[18px] font-[500] tracking-widest cursor-default"
+          " w-full h-[50px] text-[18px] font-[500] tracking-widest cursor-default"
         }
       />
     </div>
