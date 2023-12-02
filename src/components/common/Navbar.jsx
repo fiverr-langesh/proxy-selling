@@ -42,7 +42,7 @@ export default function Navbar() {
               <NavigateButton
                 customStyle="tracking-widest"
                 text="Register"
-                href="/register"
+                href="/signup"
               />
             </>
           )
